@@ -1,2 +1,10 @@
-# quevedo-yucra
-Evaluación Jorge Luis Quevedo Yucra
+# Evaluación Jorge Luis Quevedo Yucra
+
+Siga las instrucciones del archivo "Ejercicio Frontend v2.pdf".
+
+Al finalizar suba todos los cambios
+
+Documentación de la evaluación:
+
+```<Coloque aquí la documentación solicitada>```
+
