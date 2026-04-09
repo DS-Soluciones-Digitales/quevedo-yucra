@@ -1,6 +1,6 @@
 # Conversor de Monedas Central - DS Soluciones Digitales
 
-Este repositorio contiene la resolución de la prueba técnica Frontend para la "Convocatoria Desarrolladores Marzo - Abril 2026".
+Este repositorio contiene la resolución de la prueba técnica Frontend para la empresa DS Soluciones Digitales.
 
 ## 🚀 Tecnologías Empleadas
 
@@ -41,7 +41,7 @@ Asegúrate de contar con [Node.js](https://nodejs.org/) instalado en tu sistema 
    ```bash
    npm run dev
    ```
-   Diriígete a `http://localhost:5173`. Modificar el código provocará recargas en caliente automáticas.
+   Diriígete a `http://localhost:5173`. Modificar el código actualizará la vista de manera automática (Hot Reload).
 
 ---
 
