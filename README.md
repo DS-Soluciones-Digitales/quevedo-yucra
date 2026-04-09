@@ -1,73 +1,73 @@
-# React + TypeScript + Vite
+# Conversor de Monedas Central - DS Soluciones Digitales
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositorio contiene la resolución de la prueba técnica Frontend para la "Convocatoria Desarrolladores Marzo - Abril 2026".
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías Empleadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+El proyecto está construido bajo una arquitectura moderna orientada a la escalabilidad, separación de responsabilidades y excelencia visual (UI Premium).
+* **Framework:** React 19 + Vite.
+* **Lenguaje:** TypeScript (Tipado estricto para las entidades de negocio).
+* **Estilos:** Tailwind CSS v4.
+* **Gráficos:** Recharts (Gráficas vectoriales interactivas).
+* **Testing:** Vitest + React Testing Library.
 
-## React Compiler
+## 📁 Arquitectura del Sistema
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Se ha implementado una arquitectura basada en **Feature-Driven Design** separando la lógica de negocio de la vista de forma estricta:
 
-## Expanding the ESLint configuration
+*   `src/components/converter/`: Componentes aislados puramente presentacionales (Formulario, Gráfica, Cabecera).
+*   `src/hooks/useExchangeRate.ts`: La "inteligencia" matemática. Maneja calculos iterativos, reset de tipos de cambio e invoca los servicios.
+*   `src/services/exchange.ts`: Capa de infraestructura. Intercepta la llamada a la variable de entorno `VITE_API_URL` para conectarse a un servidor real o retroceder de forma segura a datos Mockeados.
+*   `src/utils/`: Funciones genéricas sobre las monedas y reglas de los pares permitidos.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Puesta en Marcha (Instalación y Configuración)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Asegúrate de contar con [Node.js](https://nodejs.org/) instalado en tu sistema (versión 18+ recomendada).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Clonar e instalar dependencias:**
+   ```bash
+   npm install
+   ```
+
+2. **Configuración del Entorno (Opcional):**
+   El código puede funcionar totalmente de forma autónoma con sus propios "Mocks". Sin embargo, para conectarse al backend real sugerido en la prueba:
+   *   Duplica el archivo `.env.example` y renómbralo a `.env`
+   *   Configura la variable `VITE_API_URL` con tu servidor:
+       `VITE_API_URL=http://localhost:3000/api`
+
+3. **Arrancar en modo Desarrollo:**
+   ```bash
+   npm run dev
+   ```
+   Diriígete a `http://localhost:5173`. Modificar el código provocará recargas en caliente automáticas.
+
+---
+
+## 🏗️ Cómo Construir el Sistema (Producción)
+
+Para empaquetar el sistema y prepararlo para un despliegue optimizado en la nube (Hostinger, Vercel, Netlify):
+
+```bash
+npm run build
+```
+Esto pasará por un test riguroso de tipado de TypeScript (`tsc -b`) y luego Vite generará una construcción hiper-optimizada y minimizada en la carpeta `/dist`.
+
+Para previsualizar el build de producción en local:
+```bash
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧪 Cómo Testear el Sistema
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+De acuerdo al requerimiento de la prueba de calidad, el core funcional está testeado mediante herramientas modernas (`Vitest`).
+
+1. Para ejecutar todos los test unitarios y que queden en modo "watch":
+   ```bash
+   npm run test
+   ```
+
+El *test script* verificará la correcta renderización, las restricciones de campos y eventos lógicos vitales de la aplicación.
